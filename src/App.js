@@ -77,6 +77,19 @@ function App() {
     }
   }
 
+  const changeSignal = () =>
+  {
+    if (currentNumber !== '0' && currentNumber.includes('-'))
+    {
+      setCurrentNumber(currentNumber.replace('-', ''));
+    }
+    else if (currentNumber !== '0' && !currentNumber.includes('-'))
+    {
+      setCurrentNumber('-' + currentNumber);
+    }
+    
+  }
+
   const handleEquals = () => {
     if (firstNumber !== '0' && operation !== '' && currentNumber !== '0')
     {
@@ -105,7 +118,7 @@ function App() {
         <Input value={ currentNumber } />
         <Row>
           <Button label="AC" style="lighter" onClick={ () => handleOnClear()}/>        
-          <Button label="+/-" style="lighter" onClick={ () => handleAddNumber('')}/>        
+          <Button label="+/-" style="lighter" onClick={ changeSignal }/>        
           <Button label="%" style="lighter" onClick={ () => handleAddNumber('')}/>        
           <Button label="/" style="orange" onClick={ handleDivisionNumbers }/>        
         </Row>    
@@ -129,7 +142,7 @@ function App() {
         </Row>   
         <Row>
           <Button label="0" style="bigger" onClick={ () => handleAddNumber('0')}/> 
-          <Button label="." style="normal" onClick={ () => handleAddNumber('')}/>        
+          <Button label="." style="normal" onClick={ () => handleAddNumber('.')}/>        
           <Button label="=" style="orange" onClick={ handleEquals } /> 
         </Row> 
       </Content>
